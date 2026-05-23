@@ -3,5 +3,9 @@ nav:
   - Lab:
       - Overview: overview.md
       - Getting Started: getting_started.md
+      - Build the Topology: task1_topology.md
+      - Configure and Deploy ThousandEyes Agents: task2_thousandeyes.md
+      - Configure and Deploy Unified Threat Defense: task3_utd.md
+      - Integrate Cisco Secure Access: task4_secureaccess.md
       - Conclusion: conclusion.md
   - Topologies: topologies.md
