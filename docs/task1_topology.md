@@ -31,10 +31,10 @@ The WAN connectivity is labeled MPLS and INET but could be a representation of a
    12. Secondary DNS Address (IPv4): Select **Global** and enter IP address **172.16.2.254**
    13. IPv4 Static Routes: **0.0.0.0/0.0.0.0**. Gateway should remain unchanged.
    14. For the IPv4 static route, click **+ Add** for Next Hop to open the Next Hop dialog.
-   15. Select **Device Specific** and change the template variable name to **INET_vpn0_nexthop_ipaddress**.
+   15. Select **Device Specific** and change the template variable name to **VPN0_INET_DefaultGW**.
    16. Click the menu to the right of the address. For Description, enter **INET WAN GATEWAY IP** and for Default value, enter **172.16.1.254**.
    17. Click **+ Add Next Hop** to add a second address.
-   18. Change the second next hop to **Device Specific** and set the variable name to **MPLS_vpn0_nexthop_ipaddress**. Add the description **MPLS WAN GATEWAY IP** and set the default value to **172.16.2.254**.
+   18. Change the second next hop to **Device Specific** and set the variable name to **VPN0_MPLS_DefaultGW**. Add the description **MPLS WAN GATEWAY IP** and set the default value to **172.16.2.254**.
    19. Click **Save** to save the static route entry.
    20. Click **Save** to save the wan_vpn Transport VPN Profile.
 21. On the dc_v01 Transport & Management Profile, click **+ Add New Feature**, then click **Management VPN**.
@@ -52,15 +52,16 @@ The WAN connectivity is labeled MPLS and INET but could be a representation of a
 5. Repeat the above steps for the Transport VPN Ethernet Interface. Use the following information to guide you:
    6. Name: **INET_Interface**
    7. Shutdown: Global, **disabled**
-   8. Interface name: Device Specific, variable name **INET_vpn_interface**
+   8. Interface name: Device Specific, variable name **VPN0_INET_Interface**
+   9. Click the menu to the right of the interface name. For Description, enter **vpn0 INET interface** and set the default value to **GigabitEthernet1**
    9. Description: Global, assign a meaningful value e.g. **>>> INET VPN interface <<<**
    10. IPv4 Settings:
        11. Address Type: **Static**
-       12. IP Address: Device Specific, variable name **INET_WAN_IP_Address**
-       13. Subnet Mask: Device Specific, variable name **INET_WAN_SubnetMask**
+       12. IP Address: Device Specific, variable name **VPN0_INET_IPAddress**
+       13. Subnet Mask: Device Specific, variable name **VPN0_INET_Subnet**
    11. Click **Tunnel** to enter the tunnel configuration context.
    12. For Tunnel Interface, select **Global** and slide to **enabled**.
-   13. Color: Global, **biz-internet**
+   13. Color: Global, **dia-internet**
    14. Locate **NTP** and select **Global** and slide to **enabled**.
    15. Navigate to Encapsulation and click **+ Add Encapsulation**
    16. For Encapsulation, select **ipsec**. Leave Preference and Weight at the default values, then click **Add**.
@@ -71,12 +72,13 @@ The WAN connectivity is labeled MPLS and INET but could be a representation of a
 7. Click **+ Add New** for the new Transport VPN Ethernet Interface. Repeat the above steps, using the following information to guide you:
    8. Name: **MPLS_vpn_interface**
    9. Shutdown: **disabled**
-   10. Interface name: Device Specific, variable name **MPLS_vpn_interface**
+   10. Interface name: Device Specific, variable name **VPN0_MPLS_Interface**
+   11. Set a default value with description for the interface name. Description: **vpn0 MPLS interface**, default value **GigabitEthernet2**.
    11. Description: Global, **>>> MPLS VPN interface <<<**
    12. IPv4 Settings:
        13. Address Type: **Static**
-       14. IP Address: Device Specific, variable **MPLS_WAN_IP_Address**
-       15. Subnet Mask: Device Specific, variable **MPLS_WAN_SubnetMask**
+       14. IP Address: Device Specific, variable **VPN0_MPLS_IPAddress**
+       15. Subnet Mask: Device Specific, variable **VPN0_MPLS_Subnet**
    16. NTP: Global, **enabled**
    17. Tunnel interface: **Global**, **enabled**
    18. Tunnel color: **mpls**
