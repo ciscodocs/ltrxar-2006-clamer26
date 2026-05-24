@@ -49,7 +49,10 @@ The WAN connectivity is labeled MPLS and INET but could be a representation of a
 2. Click **Select Management Ethernet Interface** then click **+ Add New**.
 3. Name the interface **MGMT_Interface** and specify the interface name **GigabitEthernet8**. *Note: the interface name must match exactly, or the configuration will not be applied!*
 4. Click **Save** to save the Management Ethernet Interface.
-5. Repeat the above steps for the Transport VPN Ethernet Interface. Use the following information to guide you:
+5. 
+6. 
+7. 
+8. Repeat the above steps for the Transport VPN Ethernet Interface. Use the following information to guide you:
    6. Name: **INET_Interface**
    7. Shutdown: Global, **disabled**
    8. Interface name: Device Specific, variable name **VPN0_INET_Interface**
