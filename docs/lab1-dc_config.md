@@ -1,14 +1,17 @@
-# Lab 1: Datacenter Topology Configuration
+# Lab 1: SD-WAN Topology Configuration
 
 In this lab, you will perform the following:
 
 1. Create a configuration group that will be used to define the state of the DC routers.
 2. Create a Transport & Management Profile to define VPN0 (transport) and VPN512 (management), and associate interfaces.
 3. Create a Service Profile to define VPNs for the corporate and pci networks, and associate interfaces.
-4. Deploy the datacenter configuration group to DC1 and DC2 routers
-5. Verify the VPNs are functioning as expected.
+4. Deploy the datacenter configuration group to DC1 and DC2 routers.
+5. Use a workflow to configure a branch with a single router.
+6. Clone the single router branch configuration and deploy a dual router branch.
+7. Create topologies for full mesh and hub and spoke, and observe the operational state differences of each.
+8. Verify the transport and service VPNs are functioning as expected.
 
-## Create the Datacenter Configuration
+## Build the Datacenter Configuration
 
 Configuration groups allow a structured, reusable way to group related configuration elements for a device (or group of devices) and then apply the rendered configuration to the devices in your topology. In this task, you will create a configuration group for the routers in datacenters DC1 and DC2.
 
@@ -18,7 +21,6 @@ Configuration groups allow a structured, reusable way to group related configura
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task01/step-01_configuration-groups.png" alt="Configuration Groups location" width="300px">
-
 
 2. Click **Create Configuration Group** in the top navigation bar.
 
@@ -192,7 +194,6 @@ Assign interfaces and a tracking instance
         <img src="../assets/images/lab01/task03/step-19_interfaces_added.png" alt="Interfaces added to the transport profile" width="300px">
 
 
-
 ### Task 4: Create a Tracking Instance
 
 1. Locate the Ethernet Interface vpn0_inet_interface_profile, then click **+** and **Tracker**.
@@ -223,21 +224,37 @@ Assign interfaces and a tracking instance
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task04/step-04_tracker-completed.png" alt="Completed tracker association" width="300px">
 
-5. At the bottom of the dc_transport_v01 profile, click **Back** to return to the Profile overview.
+5. At the bottom of the dc_transport_v01 profile, click **Back** to return to the Configuration Group. You should now see the System and Transport & Management Profiles associated to the dc_v01 configuration group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task04/step-05_updated-config-group.png" alt="Updated configuration group" width="300px">
+
+    !!! note
+        Save the dc_v01 configuration group at this time, if the **Save** button is illuminated.
 
 
-## Task 4: Create a Service Profile
+## Review the Service Profile for Corporate and PCI VPNs
+
+Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN topology. In this task, a preconfigured Service Profile has been created for the DC routers to reduce the task burden for this four-hour lab. Follow the steps below to review the basics of service profiles, including VPN definitions, BGP configuration, and interface assignment. You will then attach the preconfigured profile to your dc_v01 configuration group before deploying the final configuration to the datacenter routers.
+
+## Task 5: Create a Service Profile
+
+1. In the Cisco Catalyst SD-WAN Manager, click **Configuration** and **Configuration Groups** to return to the Configuration Groups dialog.
+2. In the top navigation menu, click on **Service Profile**
+3. Locate the service profile named **default_dc_service_multi_vpn_01**, click the three dots to the right of the profile name, and click **Edit**. 
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-03_edit-service-profile.png" alt="Editing a service profile" width="300px">
+
+4. Observe the following:
+    - There are two Service VPNs created: VPN10 for the Corporate network, and VPN11 for PCI data.
+    - Each Service VPN definition contains two Ethernet Interface definitions and a single BGP Routing definition.
+
+5. 
+
 
 Corporate and PCI Networks
 
 ### Steps:
 
 ## Legacy steps below:
-
-
-
-21. On the dc_v01 Transport & Management Profile, click **+ Add New Feature**, then click **Management VPN**.
-22. Click **Select Management VPN** then click **+ Add New**.
-23. Click the slider for **Add DNS IPv4** and create the Global primary and secondary DNS addresses, **172.16.1.254** and **172.16.2.254**.
-24. Click **Save** to save the Management VPN profile.
-25. When completed, your dc_v01 Transport and Management Profile should appear as follows:
