@@ -348,8 +348,11 @@ Assign interfaces and a tracking instance
 
 16. **Repeat steps 14 and 15 above** for routers **POD01-dc2-edge1 - C8K** and **POD01-dc2-edge2 - C8K**, using the information below to guide you:
 
+    !!! reminder
+        For each hostname, remember to replace **nn** with your pod number for today's lab!
+
     - Device POD01-dc2-edge1:
-        - Host Name: **PODnn-dc2-edge1** (replace **nn** with your pod number for today's lab)
+        - Host Name: **PODnn-dc2-edge1**
         - vpn0_mpls_ip_address: **172.16.2.3**
         - vpn0_inet_ip_address: **172.16.1.3**
     - Device POD01-dc2-edge2:
@@ -367,6 +370,10 @@ Assign interfaces and a tracking instance
 
     <img src="../assets/images/lab01/task05/step-20_deploy-success.png" alt="Deployment submitted" width="300px">
 
+21. In the left navigation bar, click **Configuration** then **Configuration Groups**. Click the **dc_v01** Configuration Group.
+22. Verify the deployment now indicates 4 Devices, with a Provisioning status of "0 out of sync"
+
+    <img src="../assets/images/lab01/task05/step-22_verify-deployment.png" alt="All devices in sync!" width="300px">
 
 ---
 
@@ -416,7 +423,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 
 ---
 
-## Task 7: Complete and Deploy the Configuration Group
+## Task 7: Complete the dc_v01 Configuration Group
 
 1. Click the **dc_v01** configuration group to expand the settings.
 2. Click **+ Add Profile** and then click **Service Profile**
@@ -444,6 +451,8 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task07/step-07_save-config-group.png" alt="Save the configuration group" width="300px">
+
+
 
 8. In the Configuration Group "Deployment" section, observe that no devices are associated. Click **+ Add** to associate devices with the configuration group.
 
