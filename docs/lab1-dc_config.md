@@ -386,7 +386,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 3. Locate the service profile named **default_dc_service_multi_vpn_01**, click the three dots to the right of the profile name, and click **Edit**. 
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task05/step-03_edit-service-profile.png" alt="Editing a service profile" width="300px">
+        <img src="../assets/images/lab01/task06/step-03_edit-service-profile.png" alt="Editing a service profile" width="300px">
 
 4. Observe the following:
     - There are two Service VPNs created: Corporate (VPN10) and PCI (VPN11).
@@ -400,12 +400,12 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
     - No additional settings have been changed from the default values in the Service VPN profile.
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task05/step-06_service-vpn-settings.png" alt="Service VPN configuration settings" width="300px">
+        <img src="../assets/images/lab01/task06/step-06_service-vpn-settings.png" alt="Service VPN configuration settings" width="300px">
 
 7. Click **Cancel** to exit the Service VPN configuration dialog without saving any unexpected changes.
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task05/step-07_cancel-button.png" alt="Cancel the Service VPN configuration" width="300px">
+        <img src="../assets/images/lab01/task06/step-07_cancel-button.png" alt="Cancel the Service VPN configuration" width="300px">
 
 8. Click the **edit** icon for the Corporate VPN "lan" Ethernet Interface.
 9. Observe that the interface definition is minimal. Only a Global interface name, description, and a Device Specific IPv4 address has been defined. **SCREEN CAPTURE NEEDED WHEN FINALIZED VARIABLES**
@@ -449,23 +449,28 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 
 7. Click **Save** to save the completed Configuration Group.
 
+    !!! note
+        Observe that the Configuration Group indicates that the devices are out-of-sync after you save the newly added Service and CLI Add-on Profiles. You will perform a final deployment in the next task.
+
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task07/step-07_save-config-group.png" alt="Save the configuration group" width="300px">
 
 
+## Task 8: Deploy the dc_v01 Configuration Group
 
-8. In the Configuration Group "Deployment" section, observe that no devices are associated. Click **+ Add** to associate devices with the configuration group.
-
-    ??? tip "Step Help"
-        <img src="../assets/images/lab01/task07/step-08_add-devices.png" alt="Associating devices with the configuration group" width="300px">
-
-9. Select **dc1** and **dc2** in the left navigation pane to associate the datacenter routers with the configuration group, then click **Save**.
+1. Click **Deploy** for the dc_v01 Configuration Group.
+2. In the left navigation pane, click **Global** to select all routers in dc1 and dc2.
+3. Click **Next** to continue the deployment.
+4. Click **Global** in the left navigation pane to select all sites for deployment.
+5. Configure the **dcfault_dc_service_multi_vpn_v01** Service Profile for each of the four routers ("Chassic Numbers"). Use the information below to guide you:
 
     !!! note
-        You might be warned that the devices are already associated with another Configuration Group. Click **Confirm** to move the devices to your dc_v01 Configuration Group.
+        You do not need to revisit the values you assigned in Task 5, where you deployed the default_system_v01 and dc_transport_v01 profiles. The Cisco Catalyst SD-WAN Manager retains the previously-defined settings, so only new settings or those that must be changed are required to complete the deployment. In this task, you must enter values for the "default_dc_service_multi_vpn_v01 (service)" profile for each of the devices.
 
-    ??? tip "Step Help"
-        <img src="../assets/images/lab01/task07/step-09_add-dc-routers.png" alt="Add the routers in dc1 and dc2" width="300px">
+    !!! note
+        Recall that, to provide values for a specific router, use the "Chassis Number" dropdown at the top of the right-side navigation pane in the "Add and review device configuration" context.
 
-
-11. 
+    - Device: **POD01-dc1-edge1 - C8K**:
+    - Device: **POD01-dc1-edge2 - C8K**:
+    - Device: **POD01-dc2-edge1 - C8K**:
+    - Device: **POD01-dc2-edge2 - C8K**:
