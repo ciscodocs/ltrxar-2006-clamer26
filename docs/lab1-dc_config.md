@@ -1,6 +1,3 @@
-
-
-
 # Lab 1: SD-WAN Topology Configuration
 
 ### NOTES FOR TOPOLOGY FLOW
@@ -28,11 +25,10 @@ In this lab, you will perform the following:
 7. Create topologies for full mesh and hub and spoke, and observe the operational state differences of each.
 8. Verify the transport and service VPNs are functioning as expected.
 
-## Build the Datacenter Configuration
+
+### Task 1: Create the Configuration Group
 
 Configuration groups allow a structured, reusable way to group related configuration elements for a device (or group of devices) and then apply the rendered configuration to the devices in your topology. In this task, you will create a configuration group for the routers in datacenters DC1 and DC2.
-
-### Task 1: Configuration Group
 
 1. In the Cisco Catalyst SD-WAN Manager interface, click **Configuration** and then **Configuration Groups**.
 
@@ -59,10 +55,9 @@ Configuration groups allow a structured, reusable way to group related configura
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task01/step-05_add_feature_profile.png" alt="Adding a new feature profile" width="300px">
 
+---
 
-## Create the Transport & Management Profile
-
-### Task 2: Transport and Management VPNs
+### Task 2: Transport & Management Profile
 
 1. Click **Select Transport VPN**, then click **+ Add New** to open the Transport VPN configuration context.
 2. Name the profile **vpn0_profile** and add a profile description, if desired.
@@ -114,7 +109,9 @@ Configuration groups allow a structured, reusable way to group related configura
 
 17. Click **Save** to save the Management VPN profile. You will return to the Transport & Management Profile configuration.
 
-### Task 3: Add Interfaces to the Profiles
+---
+
+### Task 3: Create Interface Associations
 
 Assign interfaces and a tracking instance
 
@@ -158,6 +155,7 @@ Assign interfaces and a tracking instance
         - Address Type: **Global**, **Static**
         - IP Address: **Device Specific**, **vpn0_inet_ip_address**
         - Subnet Mask: **Device Specific**, **vpn0_inet_subnet**
+        - Subnet Mask Default Value: **255.255.255.0** 
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task03/step-09_vpn0-inet-interface.png" alt="Internet interface basic configuration" width="300px">
@@ -196,6 +194,7 @@ Assign interfaces and a tracking instance
             - Address Type: **Global**, **Static**
             - IP Address: **Device Specific**, **vpn0_mpls_ip_address**
             - Subnet Mask: **Device Specific**, **vpn0_mpls_subnet**
+            - Subnet Mask Default Value: **255.255.255.0**
     - Tunnel:
         - Tunnel Interface: **Global**, **enabled**
         - Color: **Global**, **mpls**
@@ -210,6 +209,7 @@ Assign interfaces and a tracking instance
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task03/step-19_interfaces_added.png" alt="Interfaces added to the transport profile" width="300px">
 
+---
 
 ### Task 4: Create a Tracking Instance
 
@@ -249,12 +249,130 @@ Assign interfaces and a tracking instance
     !!! note
         Save the dc_v01 configuration group at this time, if the **Save** button is illuminated.
 
+## Task 5: Deploy the Configuration Group
 
-## Review the Service Profile for Corporate and PCI VPNs
+1. In the left navigation bar, click **Configuration** then **Configuration Groups**.
+2. Your dc_v01 Configuration Group should match the Step Help:
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-02_config-group.png" alt="Configuration group before deployment" width="300px">
+
+3. Click **Save** to save the completed Configuration Group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-03_save-config-group.png" alt="Save the configuration group" width="300px">
+
+4. In the Configuration Group "Deployment" section, observe that no devices are associated. Click **+ Add** to associate devices with the configuration group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-04_add-devices.png" alt="Associating devices with the configuration group" width="300px">
+
+5. Select **dc1** and **dc2** in the left navigation pane to associate the datacenter routers with the configuration group, then click **Save**.
+
+    !!! note
+        You might be warned that the devices are already associated with another Configuration Group. Click **Confirm** to move the devices to your dc_v01 Configuration Group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-05_add-dc-routers.png" alt="Add the routers in dc1 and dc2" width="300px"> 
+
+6. Click **Deploy** for the dc_v01 Configuration Group.
+
+    !!! note
+        Observe that the dc_v01 Configuration Group now has four associated devices, and all four are out of sync. "Out of sync" indicates that the device configuration does not match that defined in the Configuration Group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-06_deploy-config-group.png" alt="Deploying the Configuration Group" width="300px">
+
+7. On the Deploy Configuration Group dialog, click **Global** and observe that four devices are selected: two in site "dc1" and two in site "dc2", then click **Next** to continue.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-07_select-deployment-devices.png" alt="Select the devices to deploy" width="300px">
+
+8. For "Add and review device configuration," click **Global**.
+
+    !!! note
+        In the previous step, you selected **devices** for the deployment. On this step, observe the "2" beside the word "Global." The number indicates the number of **sites** that have been selected for deployment.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-08_select-global-sites.png" alt="Selecting all sites for deployment" width="300px">
+
+9. Observe that the right pane begins with the text "Chassis Number:" and there is a blue selection box to indicate the device being edited for configuration.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-09_chassis-selection.png" alt="Chassis selector" width="300px">
+
+10. For "Chassis Number," click **POD01-dc1-edge1 - C8K**, and then click **default_system_v01 (system)** to expand the system settings for router dc1-edge1.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-10_dc1-edge1.png" alt="Select dc1-edge1 and expand the system profile" width="300px">
+
+11. Edit the Host Name field Use the format **PODnn-dc1-edge1**, where **nn** is replaced with your two-digit pod number for today's lab. For pods 1-9, use 01-09.
+
+    !!! note
+        The System IP should have a default value of **10.0.0.1**, Site ID of **1**, and Dual Stack set to **False**. If your environment differs from the default values, update those now.
+
+    !!! important
+        Updating the hostname of your devices with your lab pod number will allow you to identify your routers in the "Deploying the ThousandEyes Agents" lab. All devices from today's lab will be reflected in a single ThousandEyes portal. 
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-11_set-hostname.png" alt="Updated device hostname" width="300px">
+
+12. Click **dc_transport_v01** to expand the Transport & Management VPN profile. Observe that default values you added during the profile creation are populated.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-12_transport-profile.png" alt="Expanded Transport profile settings" width="300px">
+
+13. Complete the Transport Profile, using the below settings. When complete, your profile should match the Step Help.
+
+    - vpn0_mpls_ip_address: **172.16.1.1**
+    - vpn0_mpls_subnet: **/24 255.255.255.0** (preconfigured)
+    - vpn0_inet_ip_address: **172.16.2.1**
+    - vpn0_inet_subnet: **/24 255.255.255.0** (preconfigured)
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-13_completed-transport-dc1-edge1.png" alt="Completed transport profile for dc1-edge1" width="300px">
+
+14. Change the Chassis Number to **POD01-dc1-edge2 - C8K**.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-14_dc1-edge2.png" alt="Select dc1-edge2" width="300px">
+
+15. Complete the **default_system_v01** and **dc_transport_v01** settings, using the information below:
+
+    !!! note
+        Default values are not listed below. If you are missing any defaults, please inform your proctor.
+
+    - Host Name: **PODnn-dc1-edge2** where **nn** matches your pod number for today's lab.
+    - vpn0_mpls_ip_address: **172.16.2.2**
+    - vpn0_inet_ip_address: **172.16.1.2**
+
+16. **Repeat steps 14 and 15 above** for routers **POD01-dc2-edge1 - C8K** and **POD01-dc2-edge2 - C8K**, using the information below to guide you:
+
+    - Device POD01-dc2-edge1:
+        - Host Name: **PODnn-dc2-edge1** (replace **nn** with your pod number for today's lab)
+        - vpn0_mpls_ip_address: **172.16.2.3**
+        - vpn0_inet_ip_address: **172.16.1.3**
+    - Device POD01-dc2-edge2:
+        - Host Name: **PODnn-dc2-edge2**
+        - vpn0_mpls_ip_address: **172.16.2.4**
+        - vpn0_inet_ip_address: **172.16.1.4**
+
+17. Click **Next** to proceed to the next deployment stage, after values have been assigned to all variables for each of the DC routers, 
+18. Correct any errors that appear. Otherwise, review the pending settings on the Summary page for accuracy.
+19. Click **Deploy** to begin the configuration deployment. You will be presented with the option to view the deployment status.
+
+    <img src="../assets/images/lab01/task05/step-19_deployment-submitted.png" alt="Deployment submitted" width="300px">
+
+20. Click **View Deployment Status**. If successful, your status should closely match the screen capture below:
+
+    <img src="../assets/images/lab01/task05/step-20_deploy-success.png" alt="Deployment submitted" width="300px">
+
+
+---
+
+## Task 6: Review the Preexisting Service Profile
 
 Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN topology. In this task, a preconfigured Service Profile has been created for the DC routers to reduce the task burden for this four-hour lab. Follow the steps below to review the basics of service profiles, including VPN definitions, BGP configuration, and interface assignment. You will then attach the preconfigured profile to your dc_v01 configuration group before deploying the final configuration to the datacenter routers.
-
-## Task 5: Create a Service Profile
 
 1. In the Cisco Catalyst SD-WAN Manager, click **Configuration** and **Configuration Groups** to return to the Configuration Groups dialog.
 2. In the top navigation menu, click on **Service Profile**
@@ -296,20 +414,21 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 13. Click **Cancel** to close the BGP Routing configuration context without saving any changes.
 14. Click **Configuration** and then **Configuration Groups** to return to the Configuration Group dialog.
 
+---
 
-## Task 6: Complete and Deploy the Configuration Group
+## Task 7: Complete and Deploy the Configuration Group
 
 1. Click the **dc_v01** configuration group to expand the settings.
 2. Click **+ Add Profile** and then click **Service Profile**
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task06/step-02_add-service-profile.png" alt="Add a service profile" width="300px">
+        <img src="../assets/images/lab01/task07/step-02_add-service-profile.png" alt="Add a service profile" width="300px">
 
 3. For Service Profile, click **Select One** and then click **default_dc_service_multi_vpn_v01** to attach the preconfigured Service Profile.
 4. Click **+ Add Profile** and then click **CLI Add-on Profile**.
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task06/step-04_add-cli-profile.png" alt="Add a CLI profile" width="300px">
+        <img src="../assets/images/lab01/task07/step-04_add-cli-profile.png" alt="Add a CLI profile" width="300px">
 
 5. For CLI Add-on Profile, click **Select One** and then click **edge_basic_cli**.
 
@@ -319,17 +438,17 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 6. When complete, your dc_v01 Configuration Group should match the Step Help:
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task06/step-06_completed-config-group.png" alt="Completed Configuration Group" width="300px">
+        <img src="../assets/images/lab01/task07/step-06_completed-config-group.png" alt="Completed Configuration Group" width="300px">
 
 7. Click **Save** to save the completed Configuration Group.
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task06/step-07_save-config-group.png" alt="Save the configuration group" width="300px">
+        <img src="../assets/images/lab01/task07/step-07_save-config-group.png" alt="Save the configuration group" width="300px">
 
 8. In the Configuration Group "Deployment" section, observe that no devices are associated. Click **+ Add** to associate devices with the configuration group.
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task06/step-08_add-devices.png" alt="Associating devices with the configuration group" width="300px">
+        <img src="../assets/images/lab01/task07/step-08_add-devices.png" alt="Associating devices with the configuration group" width="300px">
 
 9. Select **dc1** and **dc2** in the left navigation pane to associate the datacenter routers with the configuration group, then click **Save**.
 
@@ -337,15 +456,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
         You might be warned that the devices are already associated with another Configuration Group. Click **Confirm** to move the devices to your dc_v01 Configuration Group.
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task06/step-09_add-dc-routers.png" alt="Add the routers in dc1 and dc2" width="300px">
+        <img src="../assets/images/lab01/task07/step-09_add-dc-routers.png" alt="Add the routers in dc1 and dc2" width="300px">
 
-10. Observe that the dc_v01 Configuration Group now has four associated devices, and all four are out of sync. "Out of sync" indicates that the device configuration does not match that defined in the Configuration Group.
+
 11. 
-
-
-
-Corporate and PCI Networks
-
-### Steps:
-
-## Legacy steps below:
