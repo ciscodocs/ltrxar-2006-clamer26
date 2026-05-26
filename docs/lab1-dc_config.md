@@ -1,4 +1,21 @@
+
+
+
 # Lab 1: SD-WAN Topology Configuration
+
+### NOTES FOR TOPOLOGY FLOW
+
+1. Create config group
+2. Create transport and mgmt profile
+3. Attach interfaces / tracker
+4. Review service profile
+5. Deploy... whatever
+6. Create config group for single router branch - preconfigured profiles - just review
+7. Duplicate config group and items to build dual-router branch
+8. Deploy, whatever
+9. Topology full mesh vs hub and spoke
+10. Insert verifications steps where necessary
+
 
 In this lab, you will perform the following:
 
@@ -247,10 +264,84 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
         <img src="../assets/images/lab01/task05/step-03_edit-service-profile.png" alt="Editing a service profile" width="300px">
 
 4. Observe the following:
-    - There are two Service VPNs created: VPN10 for the Corporate network, and VPN11 for PCI data.
+    - There are two Service VPNs created: Corporate (VPN10) and PCI (VPN11).
     - Each Service VPN definition contains two Ethernet Interface definitions and a single BGP Routing definition.
 
-5. 
+5. Click the **edit** icon for the first Service VPN, Corporate. **SCREEN CAPTURE NEEDED ONCE NAME DETERMINED**
+6. In the Service VPN configuration dialog that appears, scroll through the options and observe the following:
+
+    - The VPN ID is **10**. The VPN ID is used as the VRF ID on routers participating in the SD-WAN topology.
+    - OMP will advertise connected, static, BGP, and injected (network) routes. No IPv6 advertisements have been configured.
+    - No additional settings have been changed from the default values in the Service VPN profile.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-06_service-vpn-settings.png" alt="Service VPN configuration settings" width="300px">
+
+7. Click **Cancel** to exit the Service VPN configuration dialog without saving any unexpected changes.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task05/step-07_cancel-button.png" alt="Cancel the Service VPN configuration" width="300px">
+
+8. Click the **edit** icon for the Corporate VPN "lan" Ethernet Interface.
+9. Observe that the interface definition is minimal. Only a Global interface name, description, and a Device Specific IPv4 address has been defined. **SCREEN CAPTURE NEEDED WHEN FINALIZED VARIABLES**
+10. Click **Cancel** to exit the Ethernet Interface configuration without saving any changes.
+11. Locate the BGP Routing instance for the Corporate VPN, and click the **edit** icon.
+12. Observe the following: **SCREEN CAPTURE NEEDED**
+
+    - A Global AS Number has been defined.
+    - The number of BGP maximum-paths has been globally defined as 2.
+    - BGP is configured to redistribute routes learned from OMP.
+    - One Device Specific IPv4 BGP neighbor has been defined.
+
+13. Click **Cancel** to close the BGP Routing configuration context without saving any changes.
+14. Click **Configuration** and then **Configuration Groups** to return to the Configuration Group dialog.
+
+
+## Task 6: Complete and Deploy the Configuration Group
+
+1. Click the **dc_v01** configuration group to expand the settings.
+2. Click **+ Add Profile** and then click **Service Profile**
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task06/step-02_add-service-profile.png" alt="Add a service profile" width="300px">
+
+3. For Service Profile, click **Select One** and then click **default_dc_service_multi_vpn_v01** to attach the preconfigured Service Profile.
+4. Click **+ Add Profile** and then click **CLI Add-on Profile**.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task06/step-04_add-cli-profile.png" alt="Add a CLI profile" width="300px">
+
+5. For CLI Add-on Profile, click **Select One** and then click **edge_basic_cli**.
+
+    !!! note
+        The preconfigured CLI profile contains a single command, `platform console serial`.
+
+6. When complete, your dc_v01 Configuration Group should match the Step Help:
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task06/step-06_completed-config-group.png" alt="Completed Configuration Group" width="300px">
+
+7. Click **Save** to save the completed Configuration Group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task06/step-07_save-config-group.png" alt="Save the configuration group" width="300px">
+
+8. In the Configuration Group "Deployment" section, observe that no devices are associated. Click **+ Add** to associate devices with the configuration group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task06/step-08_add-devices.png" alt="Associating devices with the configuration group" width="300px">
+
+9. Select **dc1** and **dc2** in the left navigation pane to associate the datacenter routers with the configuration group, then click **Save**.
+
+    !!! note
+        You might be warned that the devices are already associated with another Configuration Group. Click **Confirm** to move the devices to your dc_v01 Configuration Group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task06/step-09_add-dc-routers.png" alt="Add the routers in dc1 and dc2" width="300px">
+
+10. Observe that the dc_v01 Configuration Group now has four associated devices, and all four are out of sync. "Out of sync" indicates that the device configuration does not match that defined in the Configuration Group.
+11. 
+
 
 
 Corporate and PCI Networks
