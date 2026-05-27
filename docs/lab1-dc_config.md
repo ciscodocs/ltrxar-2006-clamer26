@@ -301,7 +301,7 @@ Assign interfaces and a tracking instance
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task05/step-09_chassis-selection.png" alt="Chassis selector" width="300px">
 
-10. For "Chassis Number," click **POD01-dc1-edge1 - C8K**, and then click **default_system_v01 (system)** to expand the system settings for router dc1-edge1.
+10. For "Chassis Number," click **POD00-dc1-edge1 - C8K**, and then click **default_system_v01 (system)** to expand the system settings for router dc1-edge1.
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task05/step-10_dc1-edge1.png" alt="Select dc1-edge1 and expand the system profile" width="300px">
@@ -332,7 +332,7 @@ Assign interfaces and a tracking instance
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task05/step-13_completed-transport-dc1-edge1.png" alt="Completed transport profile for dc1-edge1" width="300px">
 
-14. Change the Chassis Number to **POD01-dc1-edge2 - C8K**.
+14. Change the Chassis Number to **POD00-dc1-edge2 - C8K**.
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task05/step-14_dc1-edge2.png" alt="Select dc1-edge2" width="300px">
@@ -346,16 +346,16 @@ Assign interfaces and a tracking instance
     - vpn0_mpls_ip_address: **172.16.2.2**
     - vpn0_inet_ip_address: **172.16.1.2**
 
-16. **Repeat steps 14 and 15 above** for routers **POD01-dc2-edge1 - C8K** and **POD01-dc2-edge2 - C8K**, using the information below to guide you:
+16. **Repeat steps 14 and 15 above** for routers **POD00-dc2-edge1 - C8K** and **POD00-dc2-edge2 - C8K**, using the information below to guide you:
 
     !!! reminder
         For each hostname, remember to replace **nn** with your pod number for today's lab!
 
-    - Device POD01-dc2-edge1:
+    - Device POD00-dc2-edge1:
         - Host Name: **PODnn-dc2-edge1**
         - vpn0_mpls_ip_address: **172.16.2.3**
         - vpn0_inet_ip_address: **172.16.1.3**
-    - Device POD01-dc2-edge2:
+    - Device POD00-dc2-edge2:
         - Host Name: **PODnn-dc2-edge2**
         - vpn0_mpls_ip_address: **172.16.2.4**
         - vpn0_inet_ip_address: **172.16.1.4**
@@ -470,67 +470,67 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
     !!! note
         Recall that, to provide values for a specific router, use the "Chassis Number" dropdown at the top of the right-side navigation pane in the "Add and review device configuration" context.
 
-    - Device: **POD01-dc1-edge1 - C8K**:
+    - Device: **PODnn-dc1-edge1 - C8K**:
         - PCI (VPN 11) Service:
-            - BGP Peer IP: **10.11.1.100** (replace **x** with something)
+            - BGP Peer IP: **10.11.1.100**
             - BGP Peer ASN: **64555*
-            - LAN IP address: **10.11.1.1** (replace **x** with something else)
+            - LAN IP address: **10.11.1.2**
             - LAN Subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.11.0.1** (replace **x** with another value)
+            - Loopback address: **10.11.0.1**
             - Loopback subnet: **/32 (255.255.255.255)**
         - Corporate (VPN 10) Service:
-            - BGP Peer ID: **10.10.1.100** (replace **x**)
+            - BGP Peer ID: **10.10.1.100**
             - BGP Peer ASN: **64555**
-            - LAN IP address: **10.10.1.1** (two values?)
+            - LAN IP address: **10.10.1.2**
             - LAN subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.10.0.1** (uhhhh)
+            - Loopback address: **10.10.0.1**
             - Loopback subnet: **/32 (255.255.255.255)**
 -
-    - Device: **POD01-dc1-edge2 - C8K**:
+    - Device: **PODnn-dc1-edge2 - C8K**:
         - PCI (VPN 11) Service:
-            - BGP Peer IP: **10.11.1.100** (replace **x** with something)
+            - BGP Peer IP: **10.11.1.100**
             - BGP Peer ASN: **64555*
-            - LAN IP address: **10.11.1.2** (replace **x** with something else)
+            - LAN IP address: **10.11.1.3**
             - LAN Subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.11.0.2** (replace **x** with another value)
+            - Loopback address: **10.11.0.2**
             - Loopback subnet: **/32 (255.255.255.255)**
         - Corporate (VPN 10) Service:
-            - BGP Peer ID: **10.10.1.100** (replace **x**)
+            - BGP Peer ID: **10.10.1.100**
             - BGP Peer ASN: **64555**
-            - LAN IP address: **10.10.1.2** (two values?)
+            - LAN IP address: **10.10.1.3**
             - LAN subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.10.0.2** (uhhhh)
+            - Loopback address: **10.10.0.2**
             - Loopback subnet: **/32 (255.255.255.255)**
 
-    - Device: **POD01-dc2-edge1 - C8K**:
+    - Device: **PODnn-dc2-edge1 - C8K**:
         - PCI (VPN 11) Service:
-            - BGP Peer IP: **10.11.2.100** (replace **x** with something)
+            - BGP Peer IP: **10.11.2.100**
             - BGP Peer ASN: **64555*
-            - LAN IP address: **10.11.2.3** (replace **x** with something else)
+            - LAN IP address: **10.11.2.2**
             - LAN Subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.11.0.3** (replace **x** with another value)
+            - Loopback address: **10.11.0.3**
             - Loopback subnet: **/32 (255.255.255.255)**
         - Corporate (VPN 10) Service:
-            - BGP Peer ID: **10.10.2.100** (replace **x**)
+            - BGP Peer ID: **10.10.2.100**
             - BGP Peer ASN: **64555**
-            - LAN IP address: **10.10.2.3** (two values?)
+            - LAN IP address: **10.10.2.2**
             - LAN subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.10.0.3** (uhhhh)
+            - Loopback address: **10.10.0.3**
             - Loopback subnet: **/32 (255.255.255.255)**
 
-    - Device: **POD01-dc2-edge2 - C8K**:
+    - Device: **PODnn-dc2-edge2 - C8K**:
         - PCI (VPN 11) Service:
-            - BGP Peer IP: **10.11.2.100** (replace **x** with something)
+            - BGP Peer IP: **10.11.2.100**
             - BGP Peer ASN: **64555*
-            - LAN IP address: **10.11.2.4** (replace **x** with something else)
+            - LAN IP address: **10.11.2.3**
             - LAN Subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.11.0.4** (replace **x** with another value)
+            - Loopback address: **10.11.0.4**
             - Loopback subnet: **/32 (255.255.255.255)**
         - Corporate (VPN 10) Service:
-            - BGP Peer ID: **10.10.2.100** (replace **x**)
+            - BGP Peer ID: **10.10.2.100**
             - BGP Peer ASN: **64555**
-            - LAN IP address: **10.10.2.3** (two values?)
+            - LAN IP address: **10.10.2.3**
             - LAN subnet: **/24 (255.255.255.0)**
-            - Loopback address: **10.10.0.4** (uhhhh)
+            - Loopback address: **10.10.0.4**
             - Loopback subnet: **/32 (255.255.255.255)**
 
