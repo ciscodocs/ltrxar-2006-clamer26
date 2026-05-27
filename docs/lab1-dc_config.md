@@ -462,7 +462,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 2. In the left navigation pane, click **Global** to select all routers in dc1 and dc2.
 3. Click **Next** to continue the deployment.
 4. Click **Global** in the left navigation pane to select all sites for deployment.
-5. Configure the **dcfault_dc_service_multi_vpn_v01** Service Profile for each of the four routers ("Chassic Numbers"). Use the information below to guide you:
+5. Click the **dcfault_dc_service_multi_vpn_v01** Service Profile for each of the four routers ("Chassis Numbers") to expand the available settings, then use the information below to guide you:
 
     !!! note
         You do not need to revisit the values you assigned in Task 5, where you deployed the default_system_v01 and dc_transport_v01 profiles. The Cisco Catalyst SD-WAN Manager retains the previously-defined settings, so only new settings or those that must be changed are required to complete the deployment. In this task, you must enter values for the "default_dc_service_multi_vpn_v01 (service)" profile for each of the devices.
@@ -471,6 +471,66 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
         Recall that, to provide values for a specific router, use the "Chassis Number" dropdown at the top of the right-side navigation pane in the "Add and review device configuration" context.
 
     - Device: **POD01-dc1-edge1 - C8K**:
+        - PCI (VPN 11) Service:
+            - BGP Peer IP: **10.11.1.100** (replace **x** with something)
+            - BGP Peer ASN: **64555*
+            - LAN IP address: **10.11.1.1** (replace **x** with something else)
+            - LAN Subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.11.0.1** (replace **x** with another value)
+            - Loopback subnet: **/32 (255.255.255.255)**
+        - Corporate (VPN 10) Service:
+            - BGP Peer ID: **10.10.1.100** (replace **x**)
+            - BGP Peer ASN: **64555**
+            - LAN IP address: **10.10.1.1** (two values?)
+            - LAN subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.10.0.1** (uhhhh)
+            - Loopback subnet: **/32 (255.255.255.255)**
+-
     - Device: **POD01-dc1-edge2 - C8K**:
+        - PCI (VPN 11) Service:
+            - BGP Peer IP: **10.11.1.100** (replace **x** with something)
+            - BGP Peer ASN: **64555*
+            - LAN IP address: **10.11.1.2** (replace **x** with something else)
+            - LAN Subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.11.0.2** (replace **x** with another value)
+            - Loopback subnet: **/32 (255.255.255.255)**
+        - Corporate (VPN 10) Service:
+            - BGP Peer ID: **10.10.1.100** (replace **x**)
+            - BGP Peer ASN: **64555**
+            - LAN IP address: **10.10.1.2** (two values?)
+            - LAN subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.10.0.2** (uhhhh)
+            - Loopback subnet: **/32 (255.255.255.255)**
+
     - Device: **POD01-dc2-edge1 - C8K**:
+        - PCI (VPN 11) Service:
+            - BGP Peer IP: **10.11.2.100** (replace **x** with something)
+            - BGP Peer ASN: **64555*
+            - LAN IP address: **10.11.2.3** (replace **x** with something else)
+            - LAN Subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.11.0.3** (replace **x** with another value)
+            - Loopback subnet: **/32 (255.255.255.255)**
+        - Corporate (VPN 10) Service:
+            - BGP Peer ID: **10.10.2.100** (replace **x**)
+            - BGP Peer ASN: **64555**
+            - LAN IP address: **10.10.2.3** (two values?)
+            - LAN subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.10.0.3** (uhhhh)
+            - Loopback subnet: **/32 (255.255.255.255)**
+
     - Device: **POD01-dc2-edge2 - C8K**:
+        - PCI (VPN 11) Service:
+            - BGP Peer IP: **10.11.2.100** (replace **x** with something)
+            - BGP Peer ASN: **64555*
+            - LAN IP address: **10.11.2.4** (replace **x** with something else)
+            - LAN Subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.11.0.4** (replace **x** with another value)
+            - Loopback subnet: **/32 (255.255.255.255)**
+        - Corporate (VPN 10) Service:
+            - BGP Peer ID: **10.10.2.100** (replace **x**)
+            - BGP Peer ASN: **64555**
+            - LAN IP address: **10.10.2.3** (two values?)
+            - LAN subnet: **/24 (255.255.255.0)**
+            - Loopback address: **10.10.0.4** (uhhhh)
+            - Loopback subnet: **/32 (255.255.255.255)**
+
