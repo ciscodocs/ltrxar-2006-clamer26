@@ -473,7 +473,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
     - Device: **PODnn-dc1-edge1 - C8K**:
         - PCI (VPN 11) Service:
             - BGP Peer IP: **10.11.1.100**
-            - BGP Peer ASN: **64555*
+            - BGP Peer ASN: **64555**
             - LAN IP address: **10.11.1.2**
             - LAN Subnet: **/24 (255.255.255.0)**
             - Loopback address: **10.11.0.1**
@@ -485,11 +485,11 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
             - LAN subnet: **/24 (255.255.255.0)**
             - Loopback address: **10.10.0.1**
             - Loopback subnet: **/32 (255.255.255.255)**
--
+
     - Device: **PODnn-dc1-edge2 - C8K**:
         - PCI (VPN 11) Service:
             - BGP Peer IP: **10.11.1.100**
-            - BGP Peer ASN: **64555*
+            - BGP Peer ASN: **64555**
             - LAN IP address: **10.11.1.3**
             - LAN Subnet: **/24 (255.255.255.0)**
             - Loopback address: **10.11.0.2**
@@ -505,7 +505,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
     - Device: **PODnn-dc2-edge1 - C8K**:
         - PCI (VPN 11) Service:
             - BGP Peer IP: **10.11.2.100**
-            - BGP Peer ASN: **64555*
+            - BGP Peer ASN: **64555**
             - LAN IP address: **10.11.2.2**
             - LAN Subnet: **/24 (255.255.255.0)**
             - Loopback address: **10.11.0.3**
@@ -521,7 +521,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
     - Device: **PODnn-dc2-edge2 - C8K**:
         - PCI (VPN 11) Service:
             - BGP Peer IP: **10.11.2.100**
-            - BGP Peer ASN: **64555*
+            - BGP Peer ASN: **64555**
             - LAN IP address: **10.11.2.3**
             - LAN Subnet: **/24 (255.255.255.0)**
             - Loopback address: **10.11.0.4**
@@ -533,4 +533,11 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
             - LAN subnet: **/24 (255.255.255.0)**
             - Loopback address: **10.10.0.4**
             - Loopback subnet: **/32 (255.255.255.255)**
+
+6. Click **Next** and review the summary of changes.
+7. Click **Deploy** and monitor the deployment status. Ensure all configuration changes are applied successfully.
+
+---
+
+## Task 9: Verify the Tunnel Status
 
