@@ -1,19 +1,5 @@
 # Lab 1: SD-WAN Topology Configuration
 
-### NOTES FOR TOPOLOGY FLOW
-
-1. Create config group
-2. Create transport and mgmt profile
-3. Attach interfaces / tracker
-4. Review service profile
-5. Deploy... whatever
-6. Create config group for single router branch - preconfigured profiles - just review
-7. Duplicate config group and items to build dual-router branch
-8. Deploy, whatever
-9. Topology full mesh vs hub and spoke
-10. Insert verifications steps where necessary
-
-
 In this lab, you will perform the following:
 
 1. Create a configuration group that will be used to define the state of the DC routers.
@@ -150,6 +136,7 @@ Assign interfaces and a tracking instance
 
     - Shutdown: **Global**, **disabled**
     - Interface name: **Device Specific**, **vpn0_inet_interface**
+    - Interface Default Value: **GigabitEthernet1**
     - Description: **Global**, **>>> vpn0_inet <<<**
     - IPv4 Settings:
         - Address Type: **Global**, **Static**
@@ -188,7 +175,8 @@ Assign interfaces and a tracking instance
         - Profile Name: **vpn0_mpls_interface_profile**
         - Profile Description: Optional
         - Shutdown: **Global**, **disabled**
-        - Interface name: **Device Specific**, **vpn0_mpls_interface** 
+        - Interface name: **Device Specific**, **vpn0_mpls_interface**
+        - Interface Default Value: **GigabitEthernet2**
         - Description: **Global**, **>>> vpn0_mpls <<<**
         - IPv4 Settings:
             - Address Type: **Global**, **Static**
@@ -431,13 +419,17 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task07/step-02_add-service-profile.png" alt="Add a service profile" width="300px">
 
-3. For Service Profile, click **Select One** and then click **default_dc_service_multi_vpn_v01** to attach the preconfigured Service Profile.
+3. For Service Profile, click **Select One** and then click **dc_service_multi_vpn_v01** to attach the preconfigured Service Profile.
+
+    !!! note
+        Some service profiles may have similar names. Exercise caution and ensure you select the service profile with the exact name listed in the step!
+
 4. Click **+ Add Profile** and then click **CLI Add-on Profile**.
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task07/step-04_add-cli-profile.png" alt="Add a CLI profile" width="300px">
 
-5. For CLI Add-on Profile, click **Select One** and then click **edge_basic_cli**.
+5. For CLI Add-on Profile, click **Select One** and then click **default_cli_v01**.
 
     !!! note
         The preconfigured CLI profile contains a single command, `platform console serial`.
@@ -462,7 +454,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
 2. In the left navigation pane, click **Global** to select all routers in dc1 and dc2.
 3. Click **Next** to continue the deployment.
 4. Click **Global** in the left navigation pane to select all sites for deployment.
-5. Click the **dcfault_dc_service_multi_vpn_v01** Service Profile for each of the four routers ("Chassis Numbers") to expand the available settings, then use the information below to guide you:
+5. Click the **dc_service_multi_vpn_v01** Service Profile for each of the four routers ("Chassis Numbers") to expand the available settings, then use the information below to guide you:
 
     !!! note
         You do not need to revisit the values you assigned in Task 5, where you deployed the default_system_v01 and dc_transport_v01 profiles. The Cisco Catalyst SD-WAN Manager retains the previously-defined settings, so only new settings or those that must be changed are required to complete the deployment. In this task, you must enter values for the "default_dc_service_multi_vpn_v01 (service)" profile for each of the devices.

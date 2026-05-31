@@ -16,13 +16,13 @@
 
 3. In Cisco Catalyst SD-WAN Manager, click **Configuration** then **Configuration Groups** to open the Configuration Group context.
 
-    ??? hint
-        <img src="../assets/lab01/task01/step-01_configuration-groups.png" alt="Configuration Groups" width="300px">
+    !!! hint
+        <img src="../assets/images/lab01/task01/step-01_configuration-groups.png" alt="Configuration Groups" width="300px">
 
 4. In the top navigation bar, click **Import** to open the file upload context.
 
-    ??? tip "Step Help"
-        <img src="../assets/images/setup/task02/step-04_import-group.png" alt="Import configuration group template link" width="300px">
+    !!! hint
+        <img src="../assets/images/lab00/task02/step-04_import-group.png" alt="Import configuration group template link" width="300px">
 
 5. In the file upload context, navigate to the directory where you saved the downloaded file from Step 1. Select the downloaded file, **`export-2026-05-28T14_36_33.tar.gz`**, and click **Open** to import the Configuration Group.
 6. Verify the import was successful. If errors are encountered, notify your proctor for assistance.
