@@ -114,6 +114,7 @@
         <img src="../assets/images/lab04/utd_step30.png" width="900px" alt="Software Repository"/>
 
 31. Click Create Policy, then click Exit Workflow 
+32. 
 32. Go back to the Policy Groups configuration section by clicking Configuration, then Policy Groups 
 33. Click Add Policy Group and input the appropriate details 
 34. Policy Group Name: NGFW_IPS_InspectionPolicyGroup 
