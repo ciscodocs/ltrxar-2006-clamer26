@@ -50,17 +50,39 @@
 
 ## Task 2: Dual Router Branch
 
-Duplicate transport profile to drb_transport_v01
-Add TLOC Extension interface
-Create config group
-- Same as previous, but with drb_transport_v01 profile.
+1. Click **Configuration**, **Configuration Groups**, and then click **Transport Profiles**
+2. Locate the profile **srb_transport_v01**, click the three dots, then click **Copy**.
+3. Name the new profile **drb_transport_v01**.
+4. Edit the **drb_transport_v01** profile and add a new 
+5. Add a new Ethernet Interface to the **drb_transport_v01** profile.
+6. In the interface configuration context, click **Advanced** and locate **TLOC Extension**.
+7. Enable TLOC Extension. Use a Device Specific variable named **tloc_ext_interface** and a default value of GigabitEthernet6.
+8. Save the Interface Configuration
+9. Return to the **Configuration Groups** context
+10. Create a new configuration group named **dual_router_branch_v01**. Attach the following profiles:
+
+     - System Profile: **default_system_v01**
+     - Transport Profile: **drb_transport_v01**
+     - Service Profile: **branch_corporate_vpn_v01**
+     - CLI Add-On Profile: **default_cli_v01**
+
+11. Add the devices located in branch br3 to the configuration group.
+12. Download the ![dual router branch CSV import file](https://github.com/CiscoLearning/ciscolive-ltrxar-2006/blob/main/sdwan_files/csv/dual_router_branch-20260528.csv)
+13. Deploy the configuration group, using the downloaded dual router CSV file you downloaded.
+
+    !!! note
+        Remember to click **System Profile** for each router and set the hostname accordingly (**PODnn**)
 
 Import .csv "dual_router_branch"
 
-For each router, expand syste profile and change the hostname to PODxx-...
+For each router, expand system profile and change the hostname to PODxx-...
 
 Deploy
 Verify
+
+13. "{{ global.test_var }}"
+14. {{ macros_info() }}
+
 
 ## Task 3: Create Topologies
 
