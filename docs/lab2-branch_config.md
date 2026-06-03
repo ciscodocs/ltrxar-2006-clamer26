@@ -80,9 +80,6 @@ For each router, expand system profile and change the hostname to PODxx-...
 Deploy
 Verify
 
-13. "{{ global.test_var }}"
-14. {{ macros_info() }}
-
 
 ## Task 3: Create Topologies
 
