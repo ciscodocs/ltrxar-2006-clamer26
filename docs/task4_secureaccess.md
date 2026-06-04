@@ -193,7 +193,7 @@
     
 50. Click add
 51. Click +Add rules
-52. In the rule section change the base action to Accept and then click +Add Match
+52. In the rule section change the base action to Accept and then click +Add Action
 53. In the match action dialog, scroll down to Secure Internet Gateway/Secure Service Edge and check that box
 54. Select the Secure Service Edge Radio button
 55. Select the Cisco Secure Access in the drop-down menu
