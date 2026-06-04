@@ -75,7 +75,7 @@
     ```
         Tunnel ID = CatalystSDWANTunnels
         Passphrase = CiscoSecure8000Routers
-        Confirm Passphrase = CiscoSecure800Routers
+        Confirm Passphrase = CiscoSecure8000Routers
     ```
     
 17. Click Next
