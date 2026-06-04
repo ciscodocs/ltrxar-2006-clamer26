@@ -58,7 +58,7 @@
 
 3. Name the new profile **drb_transport_v01**.
 4. Edit the **drb_transport_v01** profile and add a new 
-5. Add a new Ethernet Interface to the **drb_transport_v01** profile. Use the following information to guide you:
+5. Add a new Ethernet Interface to the **vpn0_profile** profile. Use the following information to guide you:
 
     - Profile name: **tloc_extension**
     - Description: **TLOC Extension Interface**
