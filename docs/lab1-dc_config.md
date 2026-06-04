@@ -380,7 +380,7 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
     - There are two Service VPNs created: Corporate (VPN10) and PCI (VPN11).
     - Each Service VPN definition contains two Ethernet Interface definitions and a single BGP Routing definition.
 
-5. Click the **edit** icon for the first Service VPN, Corporate. **SCREEN CAPTURE NEEDED ONCE NAME DETERMINED**
+5. Click the **edit** icon for the first Service VPN, Corporate.
 6. In the Service VPN configuration dialog that appears, scroll through the options and observe the following:
 
     - The VPN ID is **10**. The VPN ID is used as the VRF ID on routers participating in the SD-WAN topology.
@@ -396,10 +396,10 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
         <img src="../assets/images/lab01/task06/step-07_cancel-button.png" alt="Cancel the Service VPN configuration" width="300px">
 
 8. Click the **edit** icon for the Corporate VPN "lan" Ethernet Interface.
-9. Observe that the interface definition is minimal. Only a Global interface name, description, and a Device Specific IPv4 address has been defined. **SCREEN CAPTURE NEEDED WHEN FINALIZED VARIABLES**
+9. Observe that the interface definition is minimal. Only a Global interface name, description, and a Device Specific IPv4 address has been defined.
 10. Click **Cancel** to exit the Ethernet Interface configuration without saving any changes.
 11. Locate the BGP Routing instance for the Corporate VPN, and click the **edit** icon.
-12. Observe the following: **SCREEN CAPTURE NEEDED**
+12. Observe the following:
 
     - A Global AS Number has been defined.
     - The number of BGP maximum-paths has been globally defined as 2.
