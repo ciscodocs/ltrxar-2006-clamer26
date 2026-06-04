@@ -312,9 +312,9 @@ Assign interfaces and a tracking instance
 
 13. Complete the Transport Profile, using the below settings. When complete, your profile should match the Step Help.
 
-    - vpn0_mpls_ip_address: **172.16.1.1**
+    - vpn0_mpls_ip_address: **172.16.2.1**
     - vpn0_mpls_subnet: **/24 255.255.255.0** (preconfigured)
-    - vpn0_inet_ip_address: **172.16.2.1**
+    - vpn0_inet_ip_address: **172.16.1.1**
     - vpn0_inet_subnet: **/24 255.255.255.0** (preconfigured)
 
     ??? tip "Step Help"
