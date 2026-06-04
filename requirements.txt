@@ -1,9 +1,12 @@
+pydyf~=0.10.0
 mkdocs
 mkdocs-material
-mkdocs-to-pdf
+mkdocs-to-pdf~=0.11.2
 mkdocs-glightbox
 Pygments
 pygments-ios @ git+https://github.com/vincentbernat/pygments-ios@d6b79303cd9dda7b7130e2bb06934a8a22470b11
+mkdocs-awesome-nav
 mkdocs-awesome-pages-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-macros-plugin
+weasyprint==62.3

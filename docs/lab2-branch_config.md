@@ -1,0 +1,108 @@
+# Lab 2: Build Branch Sites and Configure the Topology
+
+## Task 1: Single Router Branches
+
+1. Create a new **Configuration Group** named **branch_single_router_v01**.
+2. Attach the following preconfigured profiles to the new Configuration Group:
+
+    - System Profile: **default_system_v01**
+    - Transport Profile: **srb_transport_v01**
+    - Service Profile: **branch_corporate_vpn_v01**
+    - CLI Add-On Profile: **default_cli_v01**
+
+3. Add devices from branches **br1** and **br2** to the branch_single_router_v01 Configuration Group. When complete, devices **br1-edge1** and **br2-edge1** will be added to the configuration group.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task01/step-03_associate-devices.png" alt="Associate devices from br1 and br2" width="300px">
+
+4. Download the ![CSV import file](https://github.com/CiscoLearning/ciscolive-ltrxar-2006/blob/main/sdwan_files/csv/single_router_branch-20260528.csv) to your local desktop.
+
+    !!! note
+        You must **right-click** on the link above and click **Save** or **Save Link As** in your browser to download the CSV import file.
+
+5. Click **Deploy** for the **branch_single_router_v01** Configuration Group.
+6. When prompted to Select Devices to Deploy, click **Global** to select the devices in branches br1 and br2, and then click **Next**.
+7. On the "Add and Review Device Configuration" dialog, click **Global** to select all devices. The device selection context will appear.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task01/step-07_deploy-and-import.png" alt="Device selection context" width="300px">
+
+8. Click **Import** to open the file selection dialog. Select the file you download in the previous step, and click **Open** or **Import**, depending on your browser, to import the CSV data. 
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task01/step-08_import-link.png" alt="Import link location" width="300px">
+
+9. If no errors are displayed, the import was successful. If you encounter errors during the import, notify your proctor.
+10. Select the device **br1-edge1** and click **default_system_v01 (system)** to expand the System Profile.
+11. Change the system hostname to **PODnn-br1-edge1**, where **nn** is your pod number for today's lab.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task01/step-10_br1-edge1.png" alt="Change the hostname of br1-edge1" width="300px">
+
+12. Change the device to **br2-edge1** and set the system hostname to reflect your pod number for today's lab.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task01/step-11_br2-edge1.png" alt="Change the hostname of br2-edge1" width="300px">
+
+13. Click **Next**, review the deployment details, then click **Deploy** to deploy the configuration to branches br1 and br2.
+14. View the deployment status and verify all tasks completed successfully.
+
+
+## Task 2: Dual Router Branch
+
+1. Click **Configuration**, **Configuration Groups**, and then click **Transport Profiles**
+2. Locate the profile **srb_transport_v01**, click the three dots, then click **Copy**.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task02/step-02_copy-profile.png" alt="Advanced Menu" width="300px">
+
+3. Name the new profile **drb_transport_v01**.
+4. Edit the **drb_transport_v01** profile and add a new 
+5. Add a new Ethernet Interface to the **drb_transport_v01** profile. Use the following information to guide you:
+
+    - Profile name: **tloc_extension**
+    - Description: **TLOC Extension Interface**
+    - Shutdown: **Global, disabled**
+    - Interface Name: Global, **GigabitEthernet6**
+    - IPv4 Address: Static, Device Specific, **tloc_ext_ipaddr**
+    - IPv4 Subnet Mask: Device Specific, **tloc_ext_subnet**
+        - Default **255.255.255.0**
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task02/step-05_tloc-interface.png" alt="TLOC Extension" width="300px">
+        <img src="../assets/images/lab02/task02/step-05_tloc-ipaddr.png" alt="TLOC Extension" width="300px">
+
+6. In the interface configuration context, click **Advanced** and locate **TLOC Extension**.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task02/step-06_advanced_tloc_ext.png" alt="Advanced Menu" width="300px">
+
+7. Enable TLOC Extension. Use a Device Specific variable named **tloc_ext_wan_interface**.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task02/step-07_tloc_wan_interface.png" alt="TLOC WAN Interface" width="300px">
+
+8. Save the Interface Configuration
+9. Return to the **Configuration Groups** context
+10. Create a new configuration group named **dual_router_branch_v01**. For Site Group, Select **Dual Router**, then Attach the following profiles:
+
+     - System Profile: **default_system_v01**
+     - Transport Profile: **drb_transport_v01**
+     - Service Profile: **branch_corporate_vpn_v01**
+     - CLI Add-On Profile: **default_cli_v01**
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task02/step-10_new_config_group.png" alt="Advanced Menu" width="300px">
+
+11. Add the devices located in branch br3 to the configuration group.
+12. Download the ![dual router branch CSV import file](https://github.com/CiscoLearning/ciscolive-ltrxar-2006/blob/main/sdwan_files/csv/dual_router_branch-20260528.csv) to your local desktop.
+13. Deploy the configuration group, using the downloaded dual router CSV file you downloaded. For br3-edge1, select **EdgeDevice_1**. For br3-edge2, select **EdgeDevice_2**.
+
+    !!! note
+        Remember to click **System Profile** for each router and set the hostnames accordingly, using (**PODnn**)
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab02/task02/step-13_deploy-selection.png" alt="Deploy the configuration group" width="300px">
+        <img src="../assets/images/lab02/task02/step-13_deploy-options.png" alt="Deploy the configuration group" width="300px">
+
+You have now enabled a dual-router branch with TLOC extension.
