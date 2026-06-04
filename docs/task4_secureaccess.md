@@ -126,4 +126,3 @@
 121. Once the tunnels show up, navigate back to the CML Interface and log back into the VNC clients for the pcs
 122. Refresh the web page to see how the location changes showing the new exit point validating that the traffic is being redirected through Secure Access.
 123. Go back to the Secure Access web interface and in the left-hand menu, click Monitor and then click Activity Search and you should see data that shows what is coming from these branch networks into the Secure Access environment.
-## End of Lab

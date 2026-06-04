@@ -237,4 +237,3 @@
     ??? tip "Step Help"
         <img src="../assets/images/lab04/utd_step54.png" width="900px" alt="step"/>
 
-## End of NGFW section
