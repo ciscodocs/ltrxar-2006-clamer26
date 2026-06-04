@@ -151,8 +151,9 @@
 38. Click Add Tracker just below the source IP address field and input the details required for this dialog:
 
     ```
+       Source IP Address (device Specific) = TrackerLo0Address
        Name = SSE-Tracker
-       API URL = https://www.cisco.com
+       API URL = http://www.cisco.com
     ```
     
 39. Click Add
