@@ -3,5 +3,11 @@ nav:
   - Lab:
       - Overview: overview.md
       - Getting Started: getting_started.md
+      - "Lab 1: Datacenter Configuration": lab1-dc_config.md
+      - "Lab 2: Branch Configuration": lab2-branch_config.md
+#      - Build the Topology: task1_topology.md
+      - "Lab 3: Deploy the ThousandEyes Agents": lab3_thousandeyes.md
+      - "Lab 4: Configure and Deploy Unified Threat Defense": task3_utd.md
+      - "Lab 5: Integrate Cisco Secure Access": task4_secureaccess.md
       - Conclusion: conclusion.md
   - Topologies: topologies.md
