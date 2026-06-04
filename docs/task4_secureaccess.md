@@ -87,11 +87,12 @@
 19. Click the Static routing radio button
 20. In IP address Ranges input 10.10.0.0/16, 10.11.0.0/16 and click Add
 
+21. Click Save
+22. The next screen displays the configuration details – save this data by downloading the CSV
+
     ??? tip "Step Help"
         <img src="../assets/images/lab05/sse_step20.png" width="600px" alt="step"/>
 
-21. Click Save
-22. The next screen displays the configuration details – save this data by downloading the CSV
 23. Return to Catalyst SD-WAN Manager
 24. Navigate to the Configuration Group for the Single Router Branches
 25. Edit the Transport and Management Profile
@@ -121,11 +122,14 @@
     ```
     
 29. Save those configurations
-30. Deploy the configurations to the Single Router Branch routers (Br1 & Br2. via the ‘out of sync’ button that should show 2 routers out of sync
+30. Deploy the configurations to the Single Router Branch routers (Br1 & Br2. via the ‘out of sync’ button that should show 2 routers out of sync)
 31. In the Deploy Configuration Group dialog, input the new IP Address information for the new Loopback addresses on each router:
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab05/sse_step31.png" width="600px" alt="step"/>
+        <img src="../assets/images/lab05/sse_step31a.png" width="600px" alt="step"/>
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab05/sse_step31b.png" width="600px" alt="step"/>
 
     ```
         Br1-edge1: Lo0 = 10.1.3.1/32 Lo1 = 10.1.3.2/32
@@ -154,14 +158,14 @@
 39. Click Add
 40. In the Configuration Section, click +Add Tunnel, you will do this twice – once for each Looback.
 
-   ```
-      Interface name = ipsec1 & ipsec2
-      Tunnel Source Interface = Loopback0 & Looback1
-      Tunnel Route Via = GigabitEthernet1
-      Tracker = SSE-Tracker
-      Data Center = Primary
-   ```
-   
+    ```
+       Interface name = ipsec1 & ipsec2
+       Tunnel Source Interface = Loopback0 & Looback1
+       Tunnel Route Via = GigabitEthernet1
+       Tracker = SSE-Tracker
+       Data Center = Primary
+    ```
+
 41. Click add
 42. In the High Availability section click +Add Interface Pair and input the required details – do this twice, once for each previously created ipsec interface
 
@@ -172,13 +176,13 @@
        Backup Interface Weight = 1
     ```
     
-47. Click save in the bottom right
-48. Click the Application Priority & SLA Policy tab
-49. In the next screen, click Application Priority and SLA Policy to create a new one
-50. Name is SRB_SSE_Redirect_v01 and click Create
-51. In top right there is a toggle for Advanced Layout, clip that toggle to the right so it appears blue
-52. Click +Add Traffic Policy and input the required details:
-53. Policy Name = SRB_SSE_Redirect_Policy_v01
+43. Click save in the bottom right
+44. Click the Application Priority & SLA Policy tab
+45. In the next screen, click Application Priority and SLA Policy to create a new one
+46. Name is SRB_SSE_Redirect_v01 and click Create
+47. In top right there is a toggle for Advanced Layout, clip that toggle to the right so it appears blue
+48. Click +Add Traffic Policy and input the required details:
+49. Policy Name = SRB_SSE_Redirect_Policy_v01
 
     ```
        VPN(s. = VPN10
@@ -186,15 +190,15 @@
        Default Action = Accept
     ```
     
-57. Click add
-58. Click +Add rules
-59. In the rule section change the base action to Accept and then click +Add Match
-60. In the match action dialog, scroll down to Secure Internet Gateway/Secure Service Edge and check that box
-61. Select the Secure Service Edge Radio button
-62. Select the Cisco Secure Access in the drop-down menu
-63. Check Fall back to routing
-64. Click Save match and actions
-65. Validate your configuration shows the following:
+50. Click add
+51. Click +Add rules
+52. In the rule section change the base action to Accept and then click +Add Match
+53. In the match action dialog, scroll down to Secure Internet Gateway/Secure Service Edge and check that box
+54. Select the Secure Service Edge Radio button
+55. Select the Cisco Secure Access in the drop-down menu
+56. Check Fall back to routing
+57. Click Save match and actions
+58. Validate your configuration shows the following:
 
     ```
        Base action = accept
@@ -203,17 +207,17 @@
        Secure Service Edge Instance = Cisco-Secure-Access
     ```
     
-70. Click Save in the bottom right.
-71. Navigate back to the Policy Group configuration page by clicking Configuration on the left and then clicking Policy Groups.
-72. Click Add Policy Group and input the required information:
+59. Click Save in the bottom right.
+60. Navigate back to the Policy Group configuration page by clicking Configuration on the left and then clicking Policy Groups.
+61. Click Add Policy Group and input the required information:
 
     ```
        Policy Group Name = SRB_SSE_PolicyGroup_v01
        Solution =sdwan
     ```
     
-75. Click Create
-76. In the new Policy Group populate the drop downs with the details we created in the last few steps:
+62. Click Create
+63. In the new Policy Group populate the drop downs with the details we created in the last few steps:
 
    ```
       Application Priority = SRB_SSE_Redirect_v01
@@ -221,18 +225,18 @@
       NGFW = NGFW_Policy_v01 (optional but keeps the existing configuration we did in the last section)
    ```
    
-80. Click Save
-81. Once Saved, click the edit pencil next to Associate to associate the policy to the two Single Router Branch routers.
-82. Do not deploy the new configuration yet – first we must validate the way that traffic is flowing from the br1-vpn10-pc and br2-vpn10-pc before we apply the policy.
-83. Return to the Cisco Modeling Labs web interface and right click on the br1-vpn10-pc and then click VNC, in the window that opens at the bottom, click Open VNC
-84. Log into the PCs with the password admin
-85. Click on the globe icon in the bottom menu bar to open a web browser.
-86. In the web browser, navigate to www.whatismyipaddress.com and notice that the location displayed should show the local that the lab is hosted in (San Jose, Research Triangle Park, London, Sydney or Singapore)
-87. Return to Catalyst SD-WAN Manager and deploy the policy to the routers with the Deploy button
-88. Input the loopback0 IP Address for each router as part of the deployment process
-89. Monitor the deployment for errors
-90. In Catalyst SD-WAN Manager, click Monitor in the left-hand menu and then click Tunnels. Then click the SIG/SSE Tunnels tab.
-91. Here you should be able to monitor the tunnels coming into an UP state – it will take a few minutes.
-92. Once the tunnels show up, navigate back to the CML Interface and log back into the VNC clients for the pcs
-93. Refresh the web page to see how the location changes showing the new exit point validating that the traffic is being redirected through Secure Access.
-94. Go back to the Secure Access web interface and in the left-hand menu, click Monitor and then click Activity Search and you should see data that shows what is coming from these branch networks into the Secure Access environment.
+64. Click Save
+65. Once Saved, click the edit pencil next to Associate to associate the policy to the two Single Router Branch routers.
+66. Do not deploy the new configuration yet – first we must validate the way that traffic is flowing from the br1-vpn10-pc and br2-vpn10-pc before we apply the policy.
+67. Return to the Cisco Modeling Labs web interface and right click on the br1-vpn10-pc and then click VNC, in the window that opens at the bottom, click Open VNC
+68. Log into the PCs with the password admin
+69. Click on the globe icon in the bottom menu bar to open a web browser.
+70. In the web browser, navigate to www.whatismyipaddress.com and notice that the location displayed should show the local that the lab is hosted in (San Jose, Research Triangle Park, London, Sydney or Singapore)
+71. Return to Catalyst SD-WAN Manager and deploy the policy to the routers with the Deploy button
+72. Input the loopback0 IP Address for each router as part of the deployment process
+73. Monitor the deployment for errors
+74. In Catalyst SD-WAN Manager, click Monitor in the left-hand menu and then click Tunnels. Then click the SIG/SSE Tunnels tab.
+75. Here you should be able to monitor the tunnels coming into an UP state – it will take a few minutes.
+76. Once the tunnels show up, navigate back to the CML Interface and log back into the VNC clients for the pcs
+77. Refresh the web page to see how the location changes showing the new exit point validating that the traffic is being redirected through Secure Access.
+78. Go back to the Secure Access web interface and in the left-hand menu, click Monitor and then click Activity Search and you should see data that shows what is coming from these branch networks into the Secure Access environment.
