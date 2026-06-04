@@ -534,3 +534,10 @@ Service Profiles are used to define the overlay networks (VPNs) in the SD-WAN to
             - Loopback address: **10.10.0.4** (uhhhh)
             - Loopback subnet: **/32 (255.255.255.255)**
 
+## Task 9: Verify the Tunnels
+
+1. Click **Monitor** and then **Devices** and you should see the routers with tunnels and BFD sessions up or coming up.
+
+    ??? tip "Step Help"
+        <img src="../assets/images/lab01/task09/lab01_task09.png" alt="Verify Tunnels" width="900px">
+
