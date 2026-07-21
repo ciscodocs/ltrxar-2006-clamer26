@@ -96,7 +96,7 @@
 23. Return to Catalyst SD-WAN Manager
 24. Navigate to the Configuration Group for the Single Router Branches
 25. Edit the Transport and Management Profile
-26. Click Add Feature next to the top level option in the Transport VPN (should be named VPN10)
+26. Click Add Feature next to the top level option in the Transport VPN (should be named VPN0)
 27. Click Ethernet Interface in the options presented to the right, click it twice so that two Ethernet Interfaces are created awaiting configuration.
 28. Configure the two Ethernet Interfaces with the following details
 
@@ -193,7 +193,7 @@
     
 50. Click add
 51. Click +Add rules
-52. In the rule section change the base action to Accept and then click +Add Match
+52. In the rule section change the base action to Accept and then click +Add Action
 53. In the match action dialog, scroll down to Secure Internet Gateway/Secure Service Edge and check that box
 54. Select the Secure Service Edge Radio button
 55. Select the Cisco Secure Access in the drop-down menu
