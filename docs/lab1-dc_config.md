@@ -61,7 +61,7 @@ Configuration groups allow a structured, reusable way to group related configura
 6. Specify a default route. Enter **0.0.0.0** for Network address, and click the value **0.0.0.0** for Subnet Mask.
 
     ??? tip "Step Help"
-        <img src="../assets/images/lab01/task02/step-06_default-route.png" alt="Create the default route" width="300px">
+        <img src="../assets/images/lab01/task02/step-06_default-route.png" alt="Create the default route" width="600px">
 
 7. Scroll to the right in the IPv4 Static Route you just created. Observe that the value for Gateway is using the default of "nextHop". In the Next Hop column, click **+ Add** to define the next hop addresses.
 
@@ -81,19 +81,6 @@ Configuration groups allow a structured, reusable way to group related configura
 
 11. Click **Save** to save the Next Hop configuration.
 12. Click **Save** to save the Transport VPN Profile. You will be returned to the dc_transport_v01 Transport & Management Profile dialog.
-13. Click **+ Add New Feature**, then click **Management VPN** to add the management VPN (VPN 512).
-
-    ??? tip "Step Help"
-        <img src="../assets/images/lab01/task02/step-13_create-management-vpn.png" alt="Add the Management VPN" width="300px">
-
-14. In the Management VPN section, click **Select Management VPN**, then click **+ Add New**.
-15. Set the Name to **vpn512_mgmt_profile** and add an optional description.
-16. Add two **Global** IPv4 DNS servers, **172.16.1.254** and **172.16.2.254**. Your completed management VPN profile should closely match the Step Help.
-
-    ??? tip "Step Help"
-        <img src="../assets/images/lab01/task02/step-16_management-vpn.png" alt="Management VPN configuration" width="300px">
-
-17. Click **Save** to save the Management VPN profile. You will return to the Transport & Management Profile configuration.
 
 ---
 
@@ -101,38 +88,14 @@ Configuration groups allow a structured, reusable way to group related configura
 
 Assign interfaces and a tracking instance
 
-1. In the Management VPN definition, click **+** and then click **Management Ethernet Interface**.
-
-    ??? tip "Step Help"
-        <img src="../assets/images/lab01/task03/step-01_add_mgmt_interface.png" alt="Add a management ethernet interface" width="300px">
-
-2. Under Management Ethernet Interface, click **Select Management Ethernet Interface** then click **+ Add New**
-
-    ??? tip "Step Help"
-        <img src="../assets/images/lab01/task03/step-02_new_mgmt_interface.png" alt="Create a new interface" width="300px">
-
-3. Name the interface profile **mgmt_interface_profile** and add an optional description, such as **Management interface profile**.
-
-4. In the Basic Configuration section, define the following settings:
-
-    - Shutdown: **Global**, **disabled**
-    - Interface Name: **Global**, **GigabitEthernet8**
-    - Description: **Global**, **>>> vpn512_mgmt <<<**
-
-    When complete, your settings should match the Step Help.
-
-    ??? tip "Step Help"
-        <img src="../assets/images/lab01/task03/step-04_mgmt_interface_configuration.png" alt="Management interface configuration" width="300px">
-
-5. Click **Save** to save the Management Ethernet Interface definition and return to the Transport & Management Profile.
-6. In the Transport VPN definition, click **+** and then **Ethernet Interface**.
+1. In the Transport VPN definition, click **+** and then **Ethernet Interface**.
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task03/step-06_add-transport-interface.png" alt="Add a transport ethernet interface" width="300px">
 
-7. Click **Select Ethernet Interface** and then click **+ Add New**.
-8. Enter the name **vpn0_inet_interface_profile** and an optional description.
-9. In the Basic Configuration section, complete the following items:
+2. Click **Select Ethernet Interface** and then click **+ Add New**.
+3. Enter the name **vpn0_inet_interface_profile** and an optional description.
+4. In the Basic Configuration section, complete the following items:
 
     - Shutdown: **Global**, **disabled**
     - Interface name: **Device Specific**, **vpn0_inet_interface**
@@ -147,30 +110,30 @@ Assign interfaces and a tracking instance
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task03/step-09_vpn0-inet-interface.png" alt="Internet interface basic configuration" width="300px">
 
-10. Click **Tunnel** in the Ethernet Interface navigation bar.
-11. Complete the interface Tunnel configuration, using the following settings:
+5. Click **Tunnel** in the Ethernet Interface navigation bar.
+6. Complete the interface Tunnel configuration, using the following settings:
 
     - Tunnel Interface: **Global**, **enabled**
     - Color: **Global**, **biz-internet**
     - NTP: **Global**, **enabled**
     - Encapsulation: **+ Add Encapsulation**
     - Encapsulation Settings:
-        -  Encapsulation: **Global**, **ipsec**
+    - Encapsulation: **Global**, **ipsec**
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task03/step-11_inet-tunnel-config.png" alt="Internet interface tunnel configuration" width="300px">
 
-12. Click **NAT** in the Ethernet Interface navigation bar.
-13. Expand **IPv4 Settings**, then set NAT to **Global** and **enabled**.
-
+7. Click **NAT** in the Ethernet Interface navigation bar.
+8. Expand **IPv4 Settings**, then set NAT to **Global** and **enabled**.
+   
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task03/step-13_enable-inet-nat.png" alt="Internet interface NAT configuration" width="300px">
 
-14. Click **Save** to save the Ethernet Interface definition and return to the Transport & Management Profile settings.
+9. Click **Save** to save the Ethernet Interface definition and return to the Transport & Management Profile settings.
 
-15. Add a second Transport VPN Ethernet Interface by clicking **+** and then **Ethernet Interface**.
-16. On the new Ethernet Interface, click **Select Ethernet Interface** and then **+ Add New**.
-17. Repeat steps 8-14 above, using the following values to guide you:
+10. Add a second Transport VPN Ethernet Interface by clicking **+** and then **Ethernet Interface**.
+11. On the new Ethernet Interface, click **Select Ethernet Interface** and then **+ Add New**.
+12. Repeat steps 8-14 above, using the following values to guide you:
     - Basic Configuration:
         - Profile Name: **vpn0_mpls_interface_profile**
         - Profile Description: Optional
@@ -191,11 +154,12 @@ Assign interfaces and a tracking instance
 
     !!! note
         Do not enable NAT for the MPLS interface tunnel configuration!
-18. Click **Save** to save the vpn0 MPLS interface profile and return the the Transport & Management Profile.
-19. When you have created all interface definitions, your dc_transport_v01 profile should closely match the Step Help:
+13. Click **Save** to save the vpn0 MPLS interface profile and return the the Transport & Management Profile.
+14. When you have created all interface definitions, your dc_transport_v01 profile should closely match the Step Help:
 
     ??? tip "Step Help"
         <img src="../assets/images/lab01/task03/step-19_interfaces_added.png" alt="Interfaces added to the transport profile" width="300px">
+
 
 ---
 
