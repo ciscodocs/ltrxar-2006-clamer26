@@ -60,13 +60,13 @@ plugins:
       - custom-skip-class-name
       auto_caption: true
       caption_position: top
-  # - macros:
-  #     include_yaml: 
-  #       - data/vars_global.yaml
-  #       - data/vars_pods.yaml
-  #     on_error_fail: !ENV [MACRO_ERROR_FAIL, true]  # Set to false or comment this line with # to ignore macro errors and continue the build
-  #     on_undefined: strict
-  #     verbose: false
+  - macros:
+      include_yaml:
+        - data/vars_global.yaml
+        - data/vars_pods.yaml
+      on_error_fail: !ENV [MACRO_ERROR_FAIL, true]  # Set to false or comment this line with # to ignore macro errors and continue the build
+      on_undefined: strict
+      verbose: false
 
 markdown_extensions:
   - md_in_html
