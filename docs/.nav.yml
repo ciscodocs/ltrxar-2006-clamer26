@@ -7,8 +7,8 @@ nav:
       - "Lab 1: Datacenter Configuration": lab1-dc_config.md
       - "Lab 2: Branch and Topology Configuration": lab2-branch_config.md
 #      - Build the Topology: task1_topology.md
-      - Configure and Deploy ThousandEyes Agents: lab3_thousandeyes.md
-      - Configure and Deploy Unified Threat Defense: task3_utd.md
-      - Integrate Cisco Secure Access: task4_secureaccess.md
+      - "Lab 3: Configure and Deploy ThousandEyes Agents": lab3_thousandeyes.md
+      - "Lab 4: Configure and Deploy Unified Threat Defense": task3_utd.md
+      - "Lab 5: Integrate Cisco Secure Access": task4_secureaccess.md
 #      - Conclusion: conclusion.md
   - Topologies: topologies.md
